@@ -80,7 +80,7 @@ public class ButtonController : MonoBehaviour, IPointerDownHandler {
             //Debug.Log($"Bar progress is {barProgress}");
             barProgress += (directionRight? 1f : -1f) * m_difficultySettings.BarIndicatorSpeed * Time.deltaTime;
             barProgress = Mathf.Clamp01(barProgress);
-            m_barController.SetIndicatorProgress(barProgress);
+            m_barController.SetIndicatorProgress(barProgress, m_difficultySettings.GetTargetAreaColor(barProgress));
 
             if (Mathf.Abs(barProgress - 0.5f) >= 0.5f) {
                 directionRight = !directionRight;

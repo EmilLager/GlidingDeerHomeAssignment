@@ -37,6 +37,18 @@ public class DifficultySettings : ScriptableObject {
         }
         return TargetAreas.Miss;
     }
+    
+    public Color GetTargetAreaColor(float barPosition) {
+
+        float centeredValue = Mathf.Abs(barPosition - 0.5f);
+        
+        for (int i = 0; i < m_barTimings.Count; i++) {
+            if (centeredValue > m_barTimings[i].MinTiming && centeredValue <= m_barTimings[i].MaxTiming) {
+                return m_barTimings[i].IndicatorColor;
+            }
+        }
+        return Color.gray;
+    }
 
 #if UNITY_EDITOR
     public static DifficultySettings Load() {
@@ -90,10 +102,13 @@ public class DifficultySettings : ScriptableObject {
         [SerializeField] private TargetAreas m_targetArea;
         [SerializeField] private float m_minTiming;
         [SerializeField] private float m_maxTiming;
+        [SerializeField] private Color m_indicatorColor;
 
         public TargetAreas Area => m_targetArea;
         public float MinTiming => m_minTiming;
         public float MaxTiming => m_maxTiming;
+
+        public Color IndicatorColor => m_indicatorColor;
         
         public BarTimingZone(TargetAreas area) {
             m_targetArea = area;

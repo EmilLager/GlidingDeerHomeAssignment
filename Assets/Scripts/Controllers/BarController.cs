@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BarController : MonoBehaviour {
     
-    #region Serialized fields
+    #region SerializedFields
     
     [Header("References")]
     [SerializeField] private Transform m_barIndicator;
@@ -15,10 +15,26 @@ public class BarController : MonoBehaviour {
         
     #endregion
     
+    #region PrivateFields
+    
+    private Material m_indicatorMaterial;
+    private readonly int m_colorPropertyIndex = Shader.PropertyToID("_Color");
+    
+    #endregion
+    
     #region PublicMethods
 
-    public void SetIndicatorProgress(float progress) {
+    public void SetIndicatorProgress(float progress, Color indicatorColor) {
         m_barIndicator.transform.position = Vector3.Lerp(m_leftEdge.position, m_rightEdge.position, progress);
+        m_indicatorMaterial.SetColor(m_colorPropertyIndex, indicatorColor);
+    }
+
+    #endregion
+    
+    #region UnityCallbacks
+
+    private void Awake() {
+        m_indicatorMaterial = m_barIndicator.GetComponent<Renderer>().material;
     }
 
     #endregion

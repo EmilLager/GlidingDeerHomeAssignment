@@ -17,12 +17,16 @@ MonoBehaviour:
   - m_targetArea: 0
     m_minTiming: 0
     m_maxTiming: 0.05
+    m_indicatorColor: {r: 1, g: 0.19607845, b: 0.15686275, a: 1}
   - m_targetArea: 1
     m_minTiming: 0.05
     m_maxTiming: 0.18
+    m_indicatorColor: {r: 1, g: 0.9607844, b: 0.1764706, a: 1}
   - m_targetArea: 2
     m_minTiming: 0.18
     m_maxTiming: 0.33
+    m_indicatorColor: {r: 0.16078432, g: 0.9686275, b: 0.20392159, a: 1}
   - m_targetArea: 3
     m_minTiming: 0.33
     m_maxTiming: 0.5
+    m_indicatorColor: {r: 0.6745098, g: 0.69803923, b: 0.7137255, a: 1}
